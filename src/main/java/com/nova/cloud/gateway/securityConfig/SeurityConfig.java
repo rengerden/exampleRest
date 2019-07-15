@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.nova.cloud.gateway.repository.UserSessionRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -21,6 +22,10 @@ public class SeurityConfig extends WebSecurityConfigurerAdapter{
   
   @Autowired 
   private JwtAuthenticationConfig appProperties;
+  
+  @Autowired  
+  private UserSessionRepository userSessionRepository;
+
     
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -42,7 +47,7 @@ public class SeurityConfig extends WebSecurityConfigurerAdapter{
       .clearAuthentication(true)
       .deleteCookies("JSESSIONID")
   .and()
-    .addFilterBefore(new LoginFilter(appProperties, authenticationManager()),
+    .addFilterBefore(new LoginFilter(appProperties, authenticationManager(),userSessionRepository),
         UsernamePasswordAuthenticationFilter.class);
     
   }

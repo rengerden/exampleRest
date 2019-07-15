@@ -12,10 +12,8 @@ public class UserSession {
   @Id
   private String token ;
   
-  @Indexed
   private String account;
   
-  @Indexed
   private String userName;
 
   public String getToken() {

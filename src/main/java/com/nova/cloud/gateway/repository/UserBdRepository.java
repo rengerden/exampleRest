@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import com.nova.cloud.gateway.BO.UserBd;
 
+
 public interface UserBdRepository extends JpaRepository<UserBd, Integer> {
 
   @Query(
       value = "select count(idUser) "
-          + "from users where name = :nombre "
-          + "and password = md5(:psw)", nativeQuery = true)
-Integer isValidUser(@Param("nombre") String name, @Param("psw") String password);
+          + "from banco.users where name = :name "
+          + "and password = md5(:password)", nativeQuery = true)
+Integer isValidUser(@Param("name") String name, @Param("password") String password);
 }
