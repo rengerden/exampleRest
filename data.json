@@ -1,0 +1,6 @@
+{
+    "components":[{
+        "id_area":"mongo",
+        "description":"no relational database"
+    }]
+}
