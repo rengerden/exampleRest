@@ -1,6 +1,10 @@
 {
     "components":[{
         "id_area":"mongo",
-        "description":"no relational database"
+        "description":"MongoDB es una base de datos distribuida de propsito general, basada en documentos, almacena datos en documentos similares a JSON"
+    },
+    {
+        "id_area":"banking",
+        "description":"El proposito de esta capa es reemplazar al sistema legado S015 utilizando un DDD, bajo un marco de spring cloud, usando una comunicacion HTTP mediante servicios REST"
     }]
 }
